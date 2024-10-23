@@ -17,7 +17,8 @@
 
 <body>
     <div class="video-container">
-        <video autoplay muted loop class="background-video" preload="auto">
+        <video id="background-video" autoplay muted loop  preload="auto" style="display: none;">
+            <img id="video-snapshot" style="display: none;" alt="Video snapshot" />
             <source src="vedio/back.mp4" type="video/mp4">
             <source src="vedio/back.mov" type="video/quicktime">
             Your browser does not support the video tag.
@@ -25,12 +26,12 @@
     </div>
 
     <div id="intro" class="intro-container">
-        <h1>운세를 알려드립니다.</h1>
+        <h1>운세보는 챗도지</h1>
         <img src="doge.png" alt="chatdoge">
-        <label for="date">생년월일</label>
-        <input id="date" type="date">
-        <label for="hour">태어난 시간</label>
-        <select id="hour">
+        <label for="date" class="info">생년월일</label>
+        <input id="date" class="info" type="date">
+        <label for="hour" class="info" >태어난 시간</label>
+        <select id="hour" class="info" >
             <option value="">모름</option>
             <option value="00">00</option>
             <option value="01">01</option>
@@ -57,7 +58,7 @@
             <option value="22">22</option>
             <option value="23">23</option>
         </select>
-        <button onclick="start()">오늘의 운세보기</button>
+        <button id="info_button" onclick="start()" class="info">오늘의 운세보기</button>
     </div>
 
     <!-- 버튼클릭 후 페이지 -->

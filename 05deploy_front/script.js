@@ -8,6 +8,39 @@ let assistantMessages = [];
 let myDateTime = '';
 let threadId = [""];
 
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const video = document.getElementById('background-video');
+
+    if (video) {
+        const snapshotImg = document.getElementById('video-snapshot');
+
+        // 비디오 첫 프레임을 캡처
+        video.addEventListener('loadeddata', () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+
+            // 비디오 첫 프레임을 캔버스에 그리기
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // 캔버스 이미지를 <img> 태그에 설정 (스냅샷 생성)
+            snapshotImg.src = canvas.toDataURL('image/png');
+            snapshotImg.style.display = 'block';
+            video.style.display = 'none'; // 비디오는 처음에 숨기기
+        });
+
+        // 비디오가 준비되면 스냅샷을 숨기고 비디오를 표시
+        video.addEventListener('canplaythrough', () => {
+            snapshotImg.style.display = 'none'; // 스냅샷 숨기기
+            video.style.display = 'block'; // 비디오 표시
+            video.play(); // 비디오 재생
+        });
+    } else {
+        console.error('Video element not found');
+    }
+});
 
 
 function start() {
