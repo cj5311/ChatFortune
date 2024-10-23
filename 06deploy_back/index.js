@@ -18,8 +18,8 @@ let corsOptions = {
     origin: FRONT_URL,
     credentials: true
 }
-// app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+// app.use(cors());
 
 //POST 요청 받을 수 있게 만듦
 app.use(express.json()) // for parsing application/json
@@ -88,6 +88,6 @@ app.post('/fortuneTell', async function (req, res) {
     res.json({ "assistant": assistant_message , "threadId" : threadId });
 });
 
-app.listen(3000)
+// app.listen(3000)
 // 서버리스형태로 서버 구동 설정
-// module.exports.handler = serverless(app)
+module.exports.handler = serverless(app)
