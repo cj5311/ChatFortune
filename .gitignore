@@ -1,0 +1,4 @@
+*.log
+*.ipynb
+.env
+.zip
